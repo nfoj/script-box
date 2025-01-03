@@ -22,17 +22,6 @@
 # '\033[Style;Color;Backgroundm'
 # STYLE_COLOR_BACKGROUND='\033[00;00;00m'
 
-# Plain colors
-NONE_BLACK='\033[0;30m'
-NONE_BLUE='\033[0;34m'
-NONE_CYAN='\033[0;36m'
-NONE_GRAY='\033[0;90m'
-NONE_GREEN='\033[0;32m'
-NONE_MAGENTA='\033[0;35m'
-NONE_RED='\033[0;31m'
-NONE_WHITE='\033[0;37m'
-NONE_YELLOW='\033[0;33m'
-
 # Bold
 BOLD_BLACK='\033[1;30m'
 BOLD_BLUE='\033[1;34m'
@@ -52,9 +41,8 @@ NO_COLOR='\033[0m'
 # Cal
 echo -e " ";
 echo -e "${BOLD_BLUE} ... [CALENDAR] ...${NO_COLOR}";sleep 1
-echo " "; 
-  cal
 echo " ";
+  cal
 
 #!--------------------------------------!#
 
@@ -65,7 +53,7 @@ TD_FILE=$HOME/.td.txt
 if [ ! -f "$TD_FILE" ]; then
   touch "$TD_FILE"
   echo -e "${BOLD_BLUE} ... [FILE CREATED!] ...${NO_COLOR}";
-  echo " "; 
+  echo " ";
 fi
 
 #!--------------------------------------!#
@@ -73,9 +61,13 @@ fi
 # Help
 if [ "$1" = "" -o "$1" = "-h" ]; then
 
-  echo -e "Usage: td add \"task\" [H|M|L] - add a task with optional priority (High, Medium and Low).";
+  echo -e "${BOLD_BLUE} ... [TUTOR] ...${NO_COLOR}";
+  echo -e " ";
+  echo -e "Usage: td add \"task\" [ H | M | L ] - Optional priority (High, Medium and Low).";
   echo -e "       td rm - remove task";
   echo -e "       td list - list tasks";
+  echo -e " ";
+  echo -e "Example: td add \"Task - 01\" H";
   exit 0
   
 fi
@@ -86,24 +78,24 @@ fi
 if [ "$1" = "add" ] && [ -n "$2" ]; then
 
   if [ "$3" = "H" ]; then
-        echo -e "${BOLD_RED}H: [$2]${NO_COLOR}" >> "$TD_FILE"
-        echo -e "${BOLD_RED} ... [Task added: $2 (High)] ...${NO_COLOR}"
-        echo -e " "
+        echo -e "${BOLD_RED}H: $2${NO_COLOR}" >> "$TD_FILE";
+        echo -e "${BOLD_RED} ... [Task added: $2 (High)] ...${NO_COLOR}";
+        echo -e " ";
     
   elif [ "$3" = "M" ]; then
-        echo -e "${BOLD_MAGENTA}M: [$2]${NO_COLOR}" >> "$TD_FILE"
-        echo -e "${BOLD_MAGENTA} ... [Task added: $2 (Medium)] ...${NO_COLOR}"
-        echo -e " "
+        echo -e "${BOLD_MAGENTA}M: $2${NO_COLOR}" >> "$TD_FILE";
+        echo -e "${BOLD_MAGENTA} ... [Task added: $2 (Medium)] ...${NO_COLOR}";
+        echo -e " ";
     
   elif [ "$3" = "L" ]; then
-        echo -e "${BOLD_YELLOW}L: [$2]${NO_COLOR}" >> "$TD_FILE"
-        echo -e "${BOLD_YELLOW} ... [Task added: $2 (Low)] ...${NO_COLOR}"
-        echo -e " "
+        echo -e "${BOLD_YELLOW}L: $2${NO_COLOR}" >> "$TD_FILE";
+        echo -e "${BOLD_YELLOW} ... [Task added: $2 (Low)] ...${NO_COLOR}";
+        echo -e " ";
   
   else
-        echo -e "${BOLD_GRAY}#: [$2]${NO_COLOR}" >> "$TD_FILE"
-        echo -e "${BOLD_GRAY} ... [Task added: $2] ...${NO_COLOR}"
-        echo -e " "
+        echo -e "${BOLD_GRAY}#: $2${NO_COLOR}" >> "$TD_FILE";
+        echo -e "${BOLD_GRAY} ... [Task added: $2] ...${NO_COLOR}";
+        echo -e " ";
   
   fi 
   sort -k1,1 -t $'\e' $TD_FILE -o $TD_FILE
@@ -113,40 +105,53 @@ fi
 
 # Remove task (interactive)
 if [ "$1" = "rm" ]; then
-  echo -e "Here are your current tasks:"
-  nl "$TD_FILE"
-  echo -e " "
+  echo -e "${BOLD_BLUE} ... [REMOVE] ...${NO_COLOR}";
+  echo -e " ";
+  
+  echo -e "${BOLD_BLUE} Here are your current tasks: ${NO_COLOR}";
+  echo -e " ";
+  
+  nl -w2  -s " " "$TD_FILE"
+  echo -e " ";
 
   read -p "Enter the number of the task to remove: " task_number
 
   if ! [[ "$task_number" =~ ^[0-9]+$ ]]; then
-    echo -e "${BOLD_RED}Invalid input. Please enter a valid number.${NO_COLOR}"
+    echo -e "${BOLD_RED}Invalid input. Please enter a valid number.${NO_COLOR}";
     exit 1
   fi
 
   sed -i "${task_number}d" "$TD_FILE"
-  echo -e "${BOLD_GREEN} ... [Task removed at line $task_number] ...${NO_COLOR}"
-  echo -e " "
+  echo -e "${BOLD_GREEN} ... [Task removed at line $task_number] ...${NO_COLOR}";
+  echo -e " ";
 
   sort -k1,1 -t $'\e' "$TD_FILE" -o "$TD_FILE"
+   
 fi
 
 #!--------------------------------------!#
 
 # Print
 if [ "$1" = "list" ]; then
-    echo -e "${BOLD_RED}[High]${NO_COLOR}"
+    echo -e "${BOLD_BLUE} ... ... ... ... ... ${NO_COLOR}"; sleep 1
+    echo -e " ";
+      
+    echo -e "${BOLD_RED} ... [High] ...${NO_COLOR}"; sleep 1
+    echo -e " ";
     grep "H:" "$TD_FILE"  
-    echo ""
+    echo " ";
 
-    echo -e "${BOLD_MAGENTA}[Medium]${NO_COLOR}"
+    echo -e "${BOLD_MAGENTA} ... [Medium] ...${NO_COLOR}"; sleep 1
+    echo -e " ";
     grep "M:" "$TD_FILE"
-    echo ""
+    echo " ";
 
-    echo -e "${BOLD_YELLOW}[Low]${NO_COLOR}"
+    echo -e "${BOLD_YELLOW} ... [Low] ...${NO_COLOR}"; sleep 1
+    echo -e " ";
     grep "L:" "$TD_FILE"
-    echo ""
+    echo " ";
 
-    echo -e "${BOLD_GRAY}[#]${NO_COLOR}"
+    echo -e "${BOLD_GRAY} ... [#] ....${NO_COLOR}"; sleep 1
+    echo -e " ";
     grep "#:" "$TD_FILE"
 fi
