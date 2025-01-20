@@ -5,7 +5,6 @@
 Coleção de scripts em Bash e Python para simplificar tarefas do dia a dia. Soluções eficientes e fáceis de usar para automatizar diversas ações.
 
 ## 💾 Conteúdos
-Segue a lista de scritps:
 
 <strong>Bash</strong>
 - Teste de Conexâo;
