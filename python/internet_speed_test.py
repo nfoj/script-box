@@ -1,7 +1,7 @@
-#! /usr/bin/env python
+#!/usr/bin/env python
 
 # author: nfoj_@hotmail.com
-# description: script for connection check
+# description: internet speed test
 # system: arch linux
 
 #!--------------------------------------!#
@@ -31,23 +31,35 @@ colors = {
 
 }
 
-#!--------------------------------------!# 
+#!--------------------------------------!#
 
-import requests
+import sched
+import numpy as np
+import pandas as pd
+import time
+from datetime import datetime
+import speedtest
 
-def check_internet():
-    try:
-        response = requests.get("http://www.google.com", timeout = 5)
-        return response.status_code == 200
+st = speedtest.Speedtest()
+scheduler = sched.scheduler()
 
-    except requests.ConnectionError:
-        return False
+st.get_best_server()
 
-    except requests.Timeout:
-        return False
+def delay():
+    ok = False
+    delay_time = 0
 
-if check_internet():
-    print(f"{colors['COLOR_GREEN']}... [CONNECTED TO THE INTERNET] ...{colors['NO_COLOR']}")
+    while True:
+        delay_time = input("Enter the interval in seconds between each internet test (300s = 5min): ")
 
-else:
-    print(f"{colors['COLOR_RED']}... [CHECK YOUR INTERNET CONNECTION AND TRY AGAIN] ...{colors['NO_COLOR']}")
+        if  delay_time.isnumeric():
+            delay_time = int(delay_time)
+            ok = True
+
+        else:
+            print("Please enter nambers only.")
+
+        if ok:
+            break
+
+    return delay_time
