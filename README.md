@@ -12,9 +12,5 @@ Coleção de scripts em Bash e Python para simplificar tarefas do dia a dia. Sol
 - Lista de Tarefas.
 
 <strong>Python</strong>
-- Teste de Conexão.
-
-### 🗂️ Em andamento: 
-- Criação de Pastas e Arquivos;
-- Informações da Máquina (TOP);
-- ...
+- Teste de Conexão;
+- Teste de Velocidade de Conexão.
