@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 # author: nfoj_@hotmail.com
-# description: script for connection check
+# description: script for convert markdown files to pdf
 # system: arch linux
 
 #!--------------------------------------!#
@@ -31,23 +31,23 @@ colors = {
 
 }
 
-#!--------------------------------------!# 
+#!--------------------------------------!#
 
-import requests
+# install
+# pip install Spire.Doc
 
-def check_internet():
-    try:
-        response = requests.get("http://www.google.com", timeout = 5)
-        return response.status_code == 200
+#!--------------------------------------!#
 
-    except requests.ConnectionError:
-        return False
+# import
 
-    except requests.Timeout:
-        return False
+from spire.doc import *
+from spire.doc.common import *
 
-if check_internet():
-    print(f"{colors['COLOR_GREEN']}... [CONNECTED TO THE INTERNET] ...{colors['NO_COLOR']}")
+# 
+doc = Document()
+doc.LoadFromFile("Sample.md", FileFormat.Markdown)
+doc.SaveToFile("output/MarkdownToPDF.pdf", FileFormat.PDF)
 
-else:
-    print(f"{colors['COLOR_RED']}... [CHECK YOUR INTERNET CONNECTION AND TRY AGAIN] ...{colors['NO_COLOR']}")
+# finish
+print(f"{colors['COLOR_BLUE']}... Convert Completed! ...{colors['NO_COLOR']}")
+doc.Dispose()

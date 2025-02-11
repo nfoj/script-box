@@ -13,4 +13,5 @@ Coleção de scripts em Bash e Python para simplificar tarefas do dia a dia. Sol
 
 <strong>Python</strong>
 - Teste de Conexão;
-- Teste de Velocidade de Conexão.
+- Teste de Velocidade de Conexão;
+- Conversor de Markdown para PDF.

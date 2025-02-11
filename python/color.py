@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#!/usr/bin/env python
 
 # author: nfoj_@hotmail.com
 # description: script for connection check
