@@ -45,39 +45,60 @@ import pyttsx3
 import pdfplumber
 import PyPDF2
 
-#!--------------------------------------!#
+#!--------------------------------------!#1
 
-import PyPDF2
-import pdfplumber
-import pyttsx3
+# voices 
+engine = pyttsx3.init()
+voices = engine.getProperty('voices')
+
+for voice in voices:
+    print(f"ID: {voice.id} - Name: {voice.name}")
+
+#!--------------------------------------!#1
 
 # path
-file input("Path: ")
-output_file = 'D:/text_all_pages.pm3'
+file_path = input("Digite o caminho do arquivo PDF: ")
+output_file = input("Digite o caminho para salvar o arquivo de áudio: ")
+
+# 
+colors = {
+    'COLOR_BLUE': '\033[94m',  
+    'COLOR_RED': '\033[91m', 
+    'NO_COLOR': '\033[0m' 
+}
 
 try:
-    with open(file, 'rb') as f:
+    # Abre o arquivo PDF
+    with open(file_path, 'rb') as f:
         pdfR = PyPDF2.PdfReader(f)
-        pagges = len(pdfR.pages)
+        pages = len(pdfR.pages)  # Obtém o número de páginas do PDF
 
-    with pdfplumber.open(file) as pdf:
+    # Extrai o texto de todas as páginas
+    with pdfplumber.open(file_path) as pdf:
         all_text = ''
         for i in range(pages):
             page = pdf.pages[i]
             text = page.extract_text()
             all_text += text + ' '
 
-            s = pyttsx3.init()
-            s.save_to_file(all_text, output_file)
-            s.runAndWait()
-            s.stop()
+        # Inicializa o pyttsx3
+        s = pyttsx3.init()
 
-        print(f"{colors['COLOR_BLUE']}... Convert Completed! ...{colors['NO_COLOR']}")
+        # Obtém as vozes disponíveis
+        voices = s.getProperty('voices')
+        voice_id = "HKEY_LOCAL_MACHINE\\SOFTWARE\\Microsoft\\Speech\\Voices\\Tokens\\TTS_MS_PT-BR_MARIA_11.0"
+        s.setProperty('voice', voice_id)
+
+        # Gera o áudio com o texto
+        s.save_to_file(all_text, output_file)
+        s.runAndWait() 
+        s.quit()
+
+    print(f"{colors['COLOR_BLUE']}... Conversão Completa! Áudio gerado em: {output_file} ...{colors['NO_COLOR']}")
 
 except FileNotFoundError:
-    print(f"{colors['COLOR_RED']}... File not found: {file}! ...{colors['NO_COLOR']}")
-
+    print(f"{colors['COLOR_RED']}... Arquivo não encontrado: {file_path}! ...{colors['NO_COLOR']}")
 
 except Exception as e:
-    print(f"{colors['COLOR_RED']}... Error: {e}! ...{colors['NO_COLOR']}")
+    print(f"{colors['COLOR_RED']}... Ocorreu um erro: {e} ...{colors['NO_COLOR']}")
 
