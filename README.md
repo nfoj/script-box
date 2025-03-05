@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="images/script-box.png" ></a>
+	<img src="img/script-box.png" >
 </p>
 
 Coleção de scripts em Bash e Python para simplificar tarefas do dia a dia. Soluções eficientes e fáceis de usar para automatizar diversas ações.
