@@ -28,17 +28,98 @@ COLOR_GREEN='\033[1;32m'
 NO_COLOR='\033[0m'
 
 #!--------------------------------------!#
-  
-# connect
-# 8.8.8.8 == Google
 
-echo -e "${COLOR_BLUE} ... [TESTING NETWORK CONNECTIVITY] ...${NC}";sleep 2
+# Menu
+echo -e " "
+echo "╔═════════════════════╗"
+echo "║   Testing Network   ║"
+echo "╠═════════════════════╣"
+echo "║ 1. Test - Google    ║"
+echo "║ 2. Enter the Domain ║"
+echo "║ 3. Enter the IP     ║"
+echo "║ 4. Exit             ║"
+echo "╚═════════════════════╝"
+read -p "Enter option: " option
+echo " "
 
-if ! ping -c 1 8.8.8.8 -q &> /dev/null; then
-  echo -e "${COLOR_RED} ... [CHECK YOUR INTERNET CONNECTION AND TRY AGAIN] ...${NO_COLOR}";sleep 2
-  exit 1
-else
-  echo -e "${COLOR_GREEN} ... [CONNECTED TO THE INTERNET] ...${NO_COLOR}";sleep 2
-fi
+case "$option" in
+  "1")
+    # connect
+    # 8.8.8.8 == Google
+    echo -e "${COLOR_BLUE}╔═════════════════════╗ ${NO_COLOR}"
+    echo -e "${COLOR_BLUE}║      Testing ...    ║ ${NO_COLOR}"
+    echo -e "${COLOR_BLUE}╚═════════════════════╝ ${NO_COLOR}"
+    echo " "
 
-echo " ";
+    if ! ping -c 3 8.8.8.8 -q &> /dev/null; then
+      echo -e "${COLOR_RED}╔══════════════════════════════════════════╗ ${NO_COLOR}"
+      echo -e "${COLOR_RED}║      Check your Internet Connection      ║ ${NO_COLOR}"
+      echo -e "${COLOR_RED}║              and Try Again!              ║ ${NO_COLOR}"
+      echo -e "${COLOR_RED}╚══════════════════════════════════════════╝ ${NO_COLOR}"
+      echo " "         
+      exit 1
+    else
+      echo -e "${COLOR_GREEN}╔═════════════════════╗ ${NO_COLOR}"
+      echo -e "${COLOR_GREEN}║      Connected!     ║ ${NO_COLOR}"
+      echo -e "${COLOR_GREEN}╚═════════════════════╝ ${NO_COLOR}"
+      exit 1
+    fi
+    ;;
+
+  "2")
+    # google.com
+    read -p "Enter the Domain (www.google.com): " domain
+    echo -e " "
+    echo -e "${COLOR_BLUE}╔═════════════════════╗ ${NO_COLOR}"
+    echo -e "${COLOR_BLUE}║      Testing ...    ║ ${NO_COLOR}"
+    echo -e "${COLOR_BLUE}╚═════════════════════╝ ${NO_COLOR}"
+    echo " "
+
+    if ! ping -c 3 "$domain" -q &> /dev/null; then
+      echo -e "${COLOR_RED}╔══════════════════════════════════════════╗ ${NO_COLOR}"
+      echo -e "${COLOR_RED}║      Check your Internet Connection      ║ ${NO_COLOR}"
+      echo -e "${COLOR_RED}║              and Try Again!              ║ ${NO_COLOR}"
+      echo -e "${COLOR_RED}╚══════════════════════════════════════════╝ ${NO_COLOR}"
+      echo " "
+      exit 1
+    else
+      echo -e "${COLOR_GREEN}╔═════════════════════╗ ${NO_COLOR}"
+      echo -e "${COLOR_GREEN}║      Connected!     ║ ${NO_COLOR}"
+      echo -e "${COLOR_GREEN}╚═════════════════════╝ ${NO_COLOR}"
+      exit 1
+    fi
+    ;;
+
+  "3")
+    # 8.8.8.8
+    read -p "Enter the IP (8.8.8.8): " ip_user
+    echo -e " "
+    echo -e "${COLOR_BLUE}╔═════════════════════╗ ${NO_COLOR}"
+    echo -e "${COLOR_BLUE}║      Testing ...    ║ ${NO_COLOR}"
+    echo -e "${COLOR_BLUE}╚═════════════════════╝ ${NO_COLOR}"
+    echo " "
+
+    if ! ping -c 3 "$ip_user" -q &> /dev/null; then
+      echo -e "${COLOR_RED}╔══════════════════════════════════════════╗ ${NO_COLOR}"
+      echo -e "${COLOR_RED}║      Check your Internet Connection      ║ ${NO_COLOR}"
+      echo -e "${COLOR_RED}║              and Try Again!              ║ ${NO_COLOR}"
+      echo -e "${COLOR_RED}╚══════════════════════════════════════════╝ ${NO_COLOR}"
+      exit 1
+    else
+      echo -e "${COLOR_GREEN}╔═════════════════════╗ ${NO_COLOR}"
+      echo -e "${COLOR_GREEN}║      Connected!     ║ ${NO_COLOR}"
+      echo -e "${COLOR_GREEN}╚═════════════════════╝ ${NO_COLOR}"
+      exit 1
+    fi
+    ;;
+
+  "4")
+     exit
+     ;;
+
+  *)
+     echo -e "${COLOR_RED}╔═════════════════════╗ ${NO_COLOR}"
+     echo -e "${COLOR_RED}║   Invalid option!   ║ ${NO_COLOR}"
+     echo -e "${COLOR_RED}╚═════════════════════╝ ${NO_COLOR}"
+     ;;
+esac

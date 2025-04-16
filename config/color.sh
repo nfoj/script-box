@@ -56,3 +56,32 @@ echo -e "\033[1;3m"Bold + Italic.'\033[0m'
 echo -e "\033[1;3;31;42m"Bold + Italic + Red + Bg-Green.'\033[0m'
 
 echo -e "${NONE_BLACK}Black${NO_COLOR} - ${BOLD_BLACK}Bold Black${NO_COLOR}"
+
+#!--------------------------------------!#
+
+clear # Limpa a tela
+
+echo "------------------------"
+echo "|         MENU         |"
+echo "------------------------"
+echo "| 1. Listar arquivos   |"
+echo "| 2. Criar diretório   |"
+echo "| 3. Sair              |"
+echo "------------------------"
+
+echo "+----------------------+"
+echo "|           MENU       |"
+echo "+----------------------+"
+echo "| 1. Primeira Ação     |"
+echo "| 2. Segunda Ação      |"
+echo "| 3. Terminar          |"
+echo "+----------------------+"
+
+echo "╔════════════════════╗"
+echo "║         MENU       ║"
+echo "╠════════════════════╣"
+echo "║ 1. Mostrar data    ║"
+echo "║ 2. Mostrar usuário ║"
+echo "║ 3. Voltar ao menu  ║"
+echo "║ 4. Sair            ║"
+echo "╚════════════════════╝"
