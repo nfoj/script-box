@@ -31,50 +31,67 @@ NO_COLOR='\033[0m'
 
 # connect
 # 8.8.8.8 == Google
-
-echo -e "${COLOR_BLUE} ... [TESTING NETWORK CONNECTIVITY] ...${NC}";sleep 2
+echo -e " "
+echo -e "${COLOR_BLUE}╔════════════════════════════════════╗ ${NO_COLOR}"
+echo -e "${COLOR_BLUE}║    Testing Network Connectivity    ║ ${NO_COLOR}"
+echo -e "${COLOR_BLUE}╚════════════════════════════════════╝ ${NO_COLOR}"
 
 if ! ping -c 1 8.8.8.8 -q &> /dev/null; then
-  echo -e "${COLOR_RED} ... [CHECK YOUR INTERNET CONNECTION AND TRY AGAIN] ...${NO_COLOR}";sleep 2
-  exit 1
+   echo -e "${COLOR_RED}╔══════════════════════════════════════════╗ ${NO_COLOR}"
+   echo -e "${COLOR_RED}║      Check your Internet Connection      ║ ${NO_COLOR}"
+   echo -e "${COLOR_RED}║              and Try Again!              ║ ${NO_COLOR}"
+   echo -e "${COLOR_RED}╚══════════════════════════════════════════╝ ${NO_COLOR}"
 else
-  echo -e "${COLOR_GREEN} ... [CONNECTED TO THE INTERNET] ...${NO_COLOR}";sleep 2
+   echo -e "${COLOR_GREEN}╔═════════════════════╗ ${NO_COLOR}"
+   echo -e "${COLOR_GREEN}║      Connected!     ║ ${NO_COLOR}"
+   echo -e "${COLOR_GREEN}╚═════════════════════╝ ${NO_COLOR}"   
 fi
-
-echo " ";
 
 #!--------------------------------------!#
 
 # update
+echo " "
+echo -e "${COLOR_BLUE}╔══════════════════════════════╗ ${NO_COLOR}"
+echo -e "${COLOR_BLUE}║    Starting System Update    ║ ${NO_COLOR}"
+echo -e "${COLOR_BLUE}╚══════════════════════════════╝ ${NO_COLOR}"
+echo " "
 
-echo -e "${COLOR_BLUE} ... [STARTING SYSTEM UPDATE] ...${NO_COLOR}";sleep 2
+sudo pacman -Syu &> /dev/null
+sudo pacman -Rns $(pacman -Qtdq) # &> /dev/null
 
-  sudo pacman -Syu # &> /dev/null
-  sudo pacman -Rns $(pacman -Qtdq) # &> /dev/null
-
-echo -e "${COLOR_GREEN} ... [COMPLETED ATUALIZATION] ...${NO_COLOR}";sleep 2
-
-echo " ";
+echo -e "${COLOR_GREEN}╔═══════════════════════════════╗ ${NO_COLOR}"
+echo -e "${COLOR_GREEN}║    Completed Atualization!    ║ ${NO_COLOR}"
+echo -e "${COLOR_GREEN}╚═══════════════════════════════╝ ${NO_COLOR}"
+echo " "
 
 #!--------------------------------------!#
 
 # cleaning
 
-echo -e "${COLOR_BLUE} ... [CLEARING RAM CACHE] ...${NO_COLOR}";sleep 2
+echo -e "${COLOR_BLUE}╔═══════════════════════════════╗ ${NO_COLOR}"
+echo -e "${COLOR_BLUE}║      Clearing RAM Cache!      ║ ${NO_COLOR}"
+echo -e "${COLOR_BLUE}╚═══════════════════════════════╝ ${NO_COLOR}"
 
-   sync
-   sudo sysctl -w vm.drop_caches=3 &> /dev/null
+sync
+sudo sysctl -w vm.drop_caches=3 &> /dev/null
 
-echo -e "${COLOR_GREEN} ... [CLEANING COMPLETED] ...${NO_COLOR}";sleep 2
-
-echo " ";
+echo -e "${COLOR_GREEN}╔═══════════════════════════════╗ ${NO_COLOR}"
+echo -e "${COLOR_GREEN}║      Cleaning Completed!      ║ ${NO_COLOR}"
+echo -e "${COLOR_GREEN}╚═══════════════════════════════╝ ${NO_COLOR}"
+echo " "
 
 #!--------------------------------------!#
 
 # reboot
 
-echo -e "${COLOR_BLUE} ... [DO YOU WANT TO RESTART THE SYSTEM TO APPLY THE UPDATES? TYPE \"YES\" OR \"NO\"] ...${NO_COLOR}"
-read CONFIRMA
+echo -e "${COLOR_BLUE}╔═══════════════════════════════════════════════╗${NO_COLOR}"
+echo -e "${COLOR_BLUE}║      Do you want to [Restart] the System      ║${NO_COLOR}"
+echo -e "${COLOR_BLUE}║       the System to apply the updates?        ║${NO_COLOR}"
+echo -e "${COLOR_BLUE}╚═══════════════════════════════════════════════╝${NO_COLOR}"
+echo " "
+
+read -p "[Yes] or [No]: " CONFIRMA
+echo " "
 
 CONFIRMA=$(echo "$CONFIRMA" | tr '[:upper:]' '[:lower:]')
 
@@ -83,10 +100,14 @@ case "$CONFIRMA" in
         reboot
         ;;
     "no")
-        echo -e "${COLOR_RED}  *** [OPERATION CANCELED!] ***"
+        echo -e "${COLOR_RED}╔═══════════════════════════════╗ ${NO_COLOR}"
+        echo -e "${COLOR_RED}║      Operation Canceled!      ║ ${NO_COLOR}"
+        echo -e "${COLOR_RED}╚═══════════════════════════════╝ ${NO_COLOR}"
         exit 0
         ;;
     *)
-        echo -e "${COLOR_RED}  *** [INVALID OPTION. PLEASE TYPE \"YES\" OR \"NO\"]  ***${NO_COLOR}"
+        echo -e "${COLOR_RED}╔═══════════════════════════════╗ ${NO_COLOR}"
+        echo -e "${COLOR_RED}║        Invalid Option!        ║ ${NO_COLOR}"
+        echo -e "${COLOR_RED}╚═══════════════════════════════╝ ${NO_COLOR}"
         ;;
 esac
