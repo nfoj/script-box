@@ -28,7 +28,6 @@ colors = {
     'COLOR_RED'  : '\033[1;31m',
     'COLOR_GREEN': '\033[1;32m',
     'NO_COLOR'   : '\033[0m'
-
 }
 
 #!--------------------------------------!# 
@@ -46,8 +45,17 @@ def check_internet():
     except requests.Timeout:
         return False
 
+print(f"{colors['COLOR_BLUE']}╔═════════════════════╗{color['NO_COLOR']}")
+print(f"{colors['COLOR_BLUE']}║     Testing ...     ║{colors['COLOR_BLUE']}")
+print(f"{colors['COLOR_BLUE']}╚═════════════════════╝{colors['COLOR_BLUE']}")
+
 if check_internet():
-    print(f"{colors['COLOR_GREEN']}... [CONNECTED TO THE INTERNET] ...{colors['NO_COLOR']}")
+    print(f"{colors['COLOR_GREEN']}╔═════════════════════╗{colors['NO_COLOR']}")
+    print(f"{colors['COLOR_GREEN']}║     Connected!      ║{colors['NO_COLOR']}")
+    print(f"{colors['COLOR_GREEN']}╚═════════════════════╝{colors['NO_COLOR']}")
 
 else:
-    print(f"{colors['COLOR_RED']}... [CHECK YOUR INTERNET CONNECTION AND TRY AGAIN] ...{colors['NO_COLOR']}")
+    print(f"{colors['COLOR_RED']}╔══════════════════════════════════════════╗{colors['NO_COLOR']}")
+    print(f"{colors['COLOR_RED']}║      Check your Internet Connection      ║{colors['NO_COLOR']}")
+    print(f"{colors['COLOR_RED']}║              and Try Again!              ║{colors['NO_COLOR']}")
+    print(f"{colors['COLOR_RED']}╚══════════════════════════════════════════╝{colors['NO_COLOR']}")
