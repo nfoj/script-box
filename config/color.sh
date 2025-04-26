@@ -85,3 +85,14 @@ echo "║ 2. Mostrar usuário ║"
 echo "║ 3. Voltar ao menu  ║"
 echo "║ 4. Sair            ║"
 echo "╚════════════════════╝"
+
+
+#!--------------------------------------!#
+
+TEMP_FILE=/sys/class/thermal/thermal_zone0/temp
+
+ORIGINAL_TEMP=$(cat $TEMP_FILE)
+TEMP_C=$((ORIGINAL_TEMP/1000))
+TEMP_F=$(($TEMP_C * 9/5 + 32))
+
+echo $TEMP_F F

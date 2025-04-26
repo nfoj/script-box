@@ -9,7 +9,6 @@ Coleção de scripts em Bash e Python para simplificar tarefas do dia a dia. Sol
 <strong>Bash</strong>
 - Teste de Conexâo;
 - Update de Sistema;
-- Lista de Tarefas.
 
 <strong>Python</strong>
 - Teste de Conexão;
