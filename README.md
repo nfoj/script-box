@@ -15,5 +15,5 @@ Bem-vindo à minha coleção de scripts utilitários em Bash, Python e Rust! Aqu
 
 | Script | Descrição | Funcionalidades |
 |-|-|-|
-| [connection.py](https://github.com/nfoj/script-box/blob/main/python/connection.py) | Testa a conectividade de rede. | - Utiliza a biblioteca `requests` para enviar uma requisição HTTP <br> - Utiliza códigos de escape ANSI para exibir mensagens coloridas no terminal: <br> &nbsp;&nbsp; - Azul para a mensagem inicial de teste. <br> &nbsp;&nbsp;  -  Verde para indicar conexão bem-sucedida. <br> &nbsp;&nbsp;  -  Vermelho para indicar falha na conexão e instruir o usuário a verificar sua conexão. <br> - Imprime mensagens em caixas formatadas. |
+| [connection.py](https://github.com/nfoj/script-box/blob/main/python/connection.py) | Testa a conectividade de rede. | - Utiliza a biblioteca `requests` para enviar uma requisição HTTP <br> - Utiliza códigos de escape ANSI: <br> &nbsp;&nbsp; - Azul para a mensagem inicial de teste. <br> &nbsp;&nbsp;  -  Verde para indicar conexão bem-sucedida. <br> &nbsp;&nbsp;  -  Vermelho para indicar falha na conexão. <br> - Imprime mensagens em caixas formatadas. |
 | ... | ... |
