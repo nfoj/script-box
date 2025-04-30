@@ -10,6 +10,7 @@ Bem-vindo à minha coleção de scripts utilitários em Bash, Python e Rust! Aqu
 |-|-|-|
 | [connection.sh](https://github.com/nfoj/script-box/blob/main/shell/connection.sh) | Verifica a conectividade de rede. <br> | - Permite testar a conexão com: <br> &nbsp;&nbsp; - Google (8.8.8.8). <br> &nbsp;&nbsp; - Domínio especificado pelo usuário. <br> &nbsp;&nbsp; - Endereço IP fornecido. <br> - Interface interativa via menu. |
 | [update.sh](https://github.com/nfoj/script-box/blob/main/shell/update.sh) | Tarefas de manutenção em Arch Linux. <br> | - Executa as seguintes ações: <br> &nbsp;&nbsp; - Verifica a conexão com a internet (ping ao Google). <br> &nbsp;&nbsp; - Atualiza o sistema (`pacman -Syu`). <br> &nbsp;&nbsp; - Remove pacotes órfãos (`pacman -Rns $(pacman -Qtdq)`). <br> &nbsp;&nbsp; - Limpa o cache da RAM. <br> &nbsp;&nbsp; - Pergunta se deseja reiniciar o sistema. <br> - Utiliza cores para feedback visual. |
+| [server-stats.sh](https://github.com/nfoj/script-box/blob/main/shell/server-stats.sh) | Analisa estatísticas de desempenho do servidor. <br> | - Permite visualizar as seguintes informações: <br> &nbsp;&nbsp; - Usuário e Group. <br> &nbsp;&nbsp; - Ip, Netmask e Broadcast. <br> &nbsp;&nbsp; - CPU em uso. <br> &nbsp;&nbsp; - Disco Rigido (Tamanho do disco, espaço usado, memória disponível e porcentagem de uso). <br> &nbsp;&nbsp; - Uso da Memória e espaço livre. <br> &nbsp;&nbsp; - Temperatura do Processador e os 6 primeiros processos em andamento. |
 
 ### 🐍 Scripts em Python
 
