@@ -17,4 +17,5 @@ Bem-vindo à minha coleção de scripts utilitários em Bash, Python e Rust! Aqu
 | Script | Descrição | Funcionalidades |
 |-|-|-|
 | [connection.py](https://github.com/nfoj/script-box/blob/main/python/connection.py) | Testa a conectividade de rede. | - Utiliza a biblioteca `requests` para enviar uma requisição HTTP <br> - Utiliza códigos de escape ANSI: <br> &nbsp;&nbsp; - Azul para a mensagem inicial de teste. <br> &nbsp;&nbsp;  -  Verde para indicar conexão bem-sucedida. <br> &nbsp;&nbsp;  -  Vermelho para indicar falha na conexão. <br> - Imprime mensagens em caixas formatadas. |
-| ... | ... |
+| [rename_files.py](https://github.com/nfoj/script-box/blob/main/python/file_rename.py) | Renomeia arquivos em lote com base em um padrão. | - Solicita diretório, padrão de busca (regex) e novo nome base. &lt; <br> - Renomeia arquivos correspondentes, adicionando numeração sequencial. |
+| ... |
